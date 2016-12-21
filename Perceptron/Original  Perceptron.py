@@ -3,7 +3,7 @@ import copy
 from matplotlib import pyplot as plt
 from matplotlib import animation
  
-training_set = [[(3, 3), 1], [(4, 3), 1],[(2,5),1], [(1, 1), -1]]
+training_set = [[(3, 3), 1], [(4, 3), 1],[(2,5),-1], [(1, 1), -1]]
 w = [0, 0]
 b = 0
 history = []

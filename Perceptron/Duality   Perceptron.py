@@ -7,7 +7,7 @@ from matplotlib import pyplot as plt
 from matplotlib import animation
  
 # An example in that book, the training set and parameters' sizes are fixed
-training_set = np.array([[[3, 3], 1], [[4, 3], 1], [[1, 1], -1]])
+training_set = np.array([[[3, 3], 1], [[4, 3], 1],[(2,5),-1], [[1, 1], -1]])
  
 a = np.zeros(len(training_set), np.float)
 b = 0.0
@@ -97,7 +97,7 @@ if __name__ == "__main__":
         plt.grid(True)
         plt.xlabel('x')
         plt.ylabel('y')
-        plt.title('Perceptron Algorithm 2 (www.hankcs.com)')
+        plt.title('Perceptron Algorithm 2 ')
         return line, label
  
  
@@ -120,7 +120,7 @@ if __name__ == "__main__":
         return line, label
  
     # call the animator.  blit=true means only re-draw the parts that have changed.
-    anim = animation.FuncAnimation(fig, animate, init_func=init, frames=len(history), interval=1000, repeat=True,
+    anim = animation.FuncAnimation(fig, animate, init_func=init, frames=len(history), interval=1000, repeat=False,
                                    blit=True)
     plt.show()
     # anim.save('perceptron2.gif', fps=2, writer='imagemagick'
