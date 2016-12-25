@@ -11,6 +11,7 @@ training_set = np.array([[[3, 3], 1], [[4, 3], 1],[(2,5),-1], [[1, 1], -1]])
  
 a = np.zeros(len(training_set), np.float)
 b = 0.0
+n=0
 Gram = None
 y = np.array(training_set[:, 1])
 x = np.empty((len(training_set), 2), np.float)
@@ -36,11 +37,13 @@ def update(i):
     :param i:
     :return:
     """
-    global a, b
+    global a, b,n
     a[i] += 1
     b = b + y[i]
     history.append([np.dot(a * y, x), b])
-    # print a, b # you can uncomment this line to check the process of stochastic gradient descent
+    n +=1
+	 
+    print a, b # you can uncomment this line to check the process of stochastic gradient descent
  
  
 # calculate the judge condition
@@ -64,6 +67,7 @@ def check():
  
         w = np.dot(a * y, x)
         print "RESULT: w: " + str(w) + " b: " + str(b)
+        print n
         return False
     return True
  
@@ -123,4 +127,4 @@ if __name__ == "__main__":
     anim = animation.FuncAnimation(fig, animate, init_func=init, frames=len(history), interval=1000, repeat=False,
                                    blit=True)
     plt.show()
-    # anim.save('perceptron2.gif', fps=2, writer='imagemagick'
+    anim.save('perceptron2.gif', fps=2, writer='imagemagick')

@@ -4,9 +4,10 @@ from matplotlib import pyplot as plt
 from matplotlib import animation
  
 training_set = [[(3, 3), 1], [(4, 3), 1],[(2,5),-1], [(1, 1), -1]]
-w = [0, 0]
-b = 0
+w = [0.0, 0.0]
+b = 0.0
 history = []
+n=0 
  
  
 def update(item):
@@ -15,11 +16,12 @@ def update(item):
     :param item: an item which is classified into wrong class
     :return: nothing
     """
-    global w, b, c,history
+    global w, b, c,history,n
     w[0] += 1 * item[1] * item[0][0]
     w[1] += 1 * item[1] * item[0][1]
     b += 1 * item[1]
-
+    n +=1
+	 
     print w, b
     history.append([copy.copy(w),b])
     # you can uncomment this line to check the process of stochastic gradient descent
@@ -93,19 +95,19 @@ if __name__ == "__main__":
         w = history[i][0]
         b = history[i][1]
         if w[1] == 0: return line, label
-        x1 = -7
+        x1 = -7.0
         y1 = -(b + w[0] * x1) / w[1]
-        x2 = 7
+        x2 = 7.0
         y2 = -(b + w[0] * x2) / w[1]
         line.set_data([x1, x2], [y1, y2])
-        x1 = 0
+        x1 = 0.0
         y1 = -(b + w[0] * x1) / w[1]
         label.set_text(history[i])
         label.set_position([x1, y1])
         return line, label
  
     # call the animator.  blit=true means only re-draw the parts that have changed.
-    print history
+    print history,n
     anim = animation.FuncAnimation(fig, animate, init_func=init, frames=len(history), interval=1000, repeat=False,
                                    blit=True)
     plt.show()
